@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Монополия онлайн</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎩%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ВХОД -->
+<section id="screen-entry" class="screen">
+  <div class="entry-card">
+    <div class="logo">🎩 <span>Монополия</span></div>
+    <p class="tagline">Играйте с друзьями по сети — от 2 до 6 игроков, можно с ботами</p>
+    <label>Ваше имя
+      <input id="in-name" maxlength="16" autocomplete="nickname" placeholder="Например, Алекс">
+    </label>
+    <div class="label">Фишка</div>
+    <div id="color-pick" class="color-pick"></div>
+    <div id="entry-skins" class="hidden">
+      <div class="label">Или картинка-скин</div>
+      <div id="entry-skin-pick" class="skin-pick entry-skins"></div>
+    </div>
+    <button id="btn-create" class="btn primary big">Создать комнату</button>
+    <div class="or">или войдите по коду</div>
+    <div class="join-row">
+      <input id="in-code" maxlength="5" placeholder="КОД" autocapitalize="characters" autocomplete="off">
+      <button id="btn-join" class="btn big">Войти</button>
+    </div>
+    <div id="entry-error" class="error"></div>
+  </div>
+</section>
+
+<!-- КОМНАТА ДО НАЧАЛА ИГРЫ -->
+<section id="screen-room" class="screen hidden">
+  <div class="room-card">
+    <div class="room-head">
+      <div>
+        <div class="muted">Код комнаты</div>
+        <div id="room-code" class="room-code"></div>
+      </div>
+      <button id="btn-copy" class="btn">📋 Скопировать ссылку</button>
+    </div>
+    <h3>Игроки <span id="room-count" class="muted"></span></h3>
+    <ul id="room-players" class="room-players"></ul>
+    <div class="row">
+      <button id="btn-addbot" class="btn">🤖 Добавить бота</button>
+    </div>
+    <div id="skin-wrap">
+      <h3>Ваша фишка</h3>
+      <div id="skin-pick" class="skin-pick"></div>
+    </div>
+    <h3>Поле</h3>
+    <div id="theme-pick" class="theme-pick"></div>
+    <div id="theme-preview" class="theme-preview"></div>
+    <h3>Режимы</h3>
+    <div id="rule-pick" class="rule-pick"></div>
+    <div class="row end">
+      <button id="btn-leave-room" class="btn ghost">Выйти</button>
+      <button id="btn-start" class="btn primary big">Начать игру</button>
+    </div>
+    <div id="room-hint" class="muted center"></div>
+  </div>
+</section>
+
+<!-- ИГРА -->
+<section id="screen-game" class="screen hidden">
+  <div id="game">
+    <div id="board-wrap">
+      <div id="board">
+        <div id="stage" class="stage">
+          <img class="stage-img" src="img/center2.jpg" alt="" draggable="false">
+          <div id="stage-logo" class="stage-logo"></div>
+          <div id="stage-content" class="stage-content"></div>
+          <div id="card-box" class="card-box hidden"></div>
+          <div id="dice-area" class="dice-area">
+            <div class="die" id="die0"><div class="cube"></div></div>
+            <div class="die" id="die1"><div class="cube"></div></div>
+          </div>
+        </div>
+        <div id="tokens"></div>
+      </div>
+      <canvas id="confetti"></canvas>
+    </div>
+    <aside id="side">
+      <div id="players" class="players"></div>
+      <div id="controls" class="controls"></div>
+      <div id="mine-wrap" class="panel">
+        <div class="panel-title">Моё имущество</div>
+        <div id="mine"></div>
+      </div>
+      <div class="panel grow">
+        <div class="panel-title">События и чат</div>
+        <div id="log" class="log"></div>
+        <form id="chat-form" class="chat-form">
+          <input id="chat-in" maxlength="200" placeholder="Сообщение…" autocomplete="off">
+        </form>
+      </div>
+      <button id="btn-leave" class="btn ghost small">Покинуть игру</button>
+    </aside>
+  </div>
+</section>
+
+<div id="modal" class="modal hidden"><div id="modal-body" class="modal-body"></div></div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
